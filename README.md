@@ -24,6 +24,27 @@ A simple ledger API built with Node.js and Express that allows you to record mon
 - Node.js (version 14 or higher)
 - npm (comes with Node.js)
 
+## Quick Start
+
+```bash
+# Clone and setup
+git clone https://github.com/ardsilva/teya-challenge.git
+cd teya-challenge
+npm install
+
+# Start the server
+npm start
+
+# Test the API
+npm test
+
+# Run client examples
+npm run client
+
+# Open web demo (in browser)
+open demo.html
+```
+
 ## Installation & Setup
 
 1. **Clone the repository** (if not already done):
@@ -222,14 +243,70 @@ You can test all endpoints using tools like:
 - Browser (for GET requests)
 - Any HTTP client
 
+## JavaScript Client Library
+
+The project includes a comprehensive JavaScript client library for easy integration:
+
+### Node.js Client
+
+```javascript
+const LedgerClient = require('./ledger-client');
+const client = new LedgerClient('http://localhost:3000');
+
+// Basic operations
+const balance = await client.getBalance();
+const deposit = await client.deposit(100, 'Salary');
+const withdrawal = await client.withdraw(50, 'Shopping');
+const transactions = await client.getTransactions({ limit: 10 });
+
+// Advanced operations
+const summary = await client.getAccountSummary(5);
+const stats = await client.getTransactionStats();
+```
+
+### Browser Client
+
+```html
+<script src="ledger-client-browser.js"></script>
+<script>
+const client = new LedgerClient('http://localhost:3000');
+const balance = await client.getBalance();
+</script>
+```
+
+### Running Client Examples
+
+```bash
+# Run Node.js client examples
+npm run client
+
+# Open interactive web demo
+open demo.html  # or open in your browser
+```
+
+### Available Client Methods
+
+- `checkHealth()` - Check API health
+- `getBalance()` - Get current balance
+- `getTransactions(options)` - Get transaction history
+- `getTransaction(id)` - Get specific transaction
+- `deposit(amount, description)` - Record a deposit
+- `withdraw(amount, description)` - Record a withdrawal
+- `getAccountSummary(limit)` - Get balance + recent transactions
+- `getTransactionStats()` - Get transaction statistics
+
 ## Project Structure
 
 ```
 teya-challenge/
-├── server.js          # Main server file with all routes
-├── package.json       # Dependencies and scripts
-├── test-api.js        # tests
-└── README.md          # This file
+├── server.js              # Main server file with all routes
+├── package.json           # Dependencies and scripts
+├── test-api.js            # API test script
+├── ledger-client.js       # Node.js client library
+├── ledger-client-browser.js # Browser client library
+├── client-examples.js     # Client library examples
+├── demo.html              # Interactive web demo
+└── README.md              # This file
 ```
 
 ## Notes
