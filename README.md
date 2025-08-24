@@ -28,7 +28,7 @@ A simple ledger API built with Node.js and Express that allows you to record mon
 
 1. **Clone the repository** (if not already done):
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/ardsilva/teya-challenge.git
    cd teya-challenge
    ```
 
@@ -228,7 +228,8 @@ You can test all endpoints using tools like:
 teya-challenge/
 ├── server.js          # Main server file with all routes
 ├── package.json       # Dependencies and scripts
-└── README.md         # This file
+├── test-api.js        # tests
+└── README.md          # This file
 ```
 
 ## Notes
